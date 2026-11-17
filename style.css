@@ -1,0 +1,186 @@
+/* --- 1. 폰트 파일 등록하기 --- */
+@font-face {
+    font-family: 'TitleFont'; 
+    src: url('온글잎 수야.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'DialogueFont'; 
+    src: url('온글잎 수야.ttf') format('truetype'); 
+}
+
+/* 화면 전체 정중앙에 게임 창 배치 */
+body {
+    margin: 0;
+    background: #ffeef2;
+    font-family: 'TitleFont', 'Malgun Gothic', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* =========================================
+   💻 [기본] PC 버전 완전 고정 세팅
+   ========================================= */
+#game-container {
+    width: 800px;
+    height: 640px; 
+    position: relative;
+    border: 4px solid #ffb6c1;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+/* 화면 전환용 공통 클래스 */
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- [1] 타이틀 화면 스타일 (PC 고정) --- */
+#title-screen {
+    background-image: url('title-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+
+#game-title {
+    font-size: 42px;
+    color: #d84355;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.9);
+}
+
+#game-subtitle {
+    font-size: 18px;
+    color: #c75c6c;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
+
+#start-btn {
+    padding: 12px 35px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #ff7b90;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 123, 144, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+
+#start-btn:hover {
+    background-color: #ff5c77;
+    transform: scale(1.05);
+}
+
+/* --- [2] 게임 플레이 화면 --- */
+#play-screen {
+    background-image: url('play-bg.jpg'); 
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- 하단 대화창 틀 --- */
+#dialogue-box {
+    position: absolute;
+    bottom: 2.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 92%;
+    aspect-ratio: 2156 / 729; 
+    
+    background-image: url('dialogue-bg.png'); 
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* --- 이름표 및 대사 (PC 고정 크기) --- */
+#speaker-name {
+    position: absolute;
+    top: 24.5%;     
+    left: 18%;    
+    
+    font-weight: bold;
+    color: #523737;
+    font-size: 22px; /* PC에서 항상 20px 고정 */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    font-family: 'DialogueFont', sans-serif;
+}
+
+#dialogue-text {
+    position: absolute;
+    top: 52%;     
+    left: 13%;    
+    width: 70%;     
+    
+    color: #523737;
+    font-size: 22px; /* PC에서 항상 18px 고정 */
+    line-height: 1.45;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    font-family: 'DialogueFont', sans-serif;
+}
+
+/* =========================================
+   📱 [모바일] 850px 이하 화면 완전 고정 세팅
+   ========================================= */
+@media screen and (max-width: 850px) {
+    /* 모바일 게임 창 크기 고정 (1402:1122 비율 유지) */
+    #game-container {
+        width: 360px;
+        height: 288px; 
+        border-width: 3px;
+    }
+
+    /* 모바일 타이틀 화면 글씨/버튼 고정 */
+    #game-title {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+
+    #game-subtitle {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    #start-btn {
+        padding: 8px 22px;
+        font-size: 14px;
+    }
+
+    /* 모바일 이름표 및 대사 글씨 고정 */
+    #speaker-name {
+        font-size: 12px; /* 모바일에서 항상 12px 고정 */
+    }
+
+    #dialogue-text {
+        font-size: 10px; /* 모바일에서 항상 10px 고정 */
+        line-height: 1.35;
+    }
+}
